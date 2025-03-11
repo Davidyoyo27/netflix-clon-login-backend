@@ -1,5 +1,9 @@
 // CONTROLADOR es el que recibe las solicitudes desde el Frontend y las procesa donde el quiera, en este caso a nuestro MODELS
-import { findUserEmail, createUser } from "../models/user.model.js";
+
+// CONEXION a la base de datos local
+// import { findUserEmail, createUser } from "../models/user.model.js";
+// CONEXION a la base de datos de produccion (supabase)
+import { createUser, findUserEmail } from "../models/user.models.supabaseDB.js";
 // importamos la liberia para encriptar la contraseña
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
@@ -50,7 +54,8 @@ export const login = async (req, res) => {
 
         // verificamos si el email existe registrado en la BD, si es asi, lo almacena en la variable user
         const user = await findUserEmail(email);
-        // si no exisite el email ingresado
+
+        // si no existe el email ingresado
         if (!user) {
             // muestra el siguiente error
             return res.json({ ok: false, msg: "ERROR el email no se encuentra registrado" });
