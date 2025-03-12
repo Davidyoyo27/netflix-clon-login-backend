@@ -16,7 +16,7 @@ const app = express();
 // en este caso la que se usa mas abajo
 app.use(
     cors({
-        origin: 'http://localhost:5173',  // Permitir solo tu fontend
+        origin: 'https://67d12e65124f52da64cacd1a--netfllix-clon.netlify.app',  // Permitir solo tu fontend
         methods: ['GET', 'POST'],         // Metodos permitidos
         allowedHeaders: ['Content-Type', 'Authorization'], // cabeceras permitidas
         credentials: true,   // Para permitir cookies en solicitudes CORS
